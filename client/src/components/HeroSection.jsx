@@ -17,7 +17,7 @@ const HeroSection = () => {
       year: "2025",
       duration: "2h 34m",
       description: "Pawan Kalyan stars as Ojas Gambheera (OG), a young man who rises in the criminal underworld of 1970s Bombay.",
-      background: "/og.png",
+      background: "/og.jpg",
       logo: assets.ogLogo
     },
     {
@@ -27,7 +27,7 @@ const HeroSection = () => {
       year: "2022",
       duration: "2h 53m",
       description: "A covert operation unravels the dark past of Vikram as he battles drug cartels and masked enemies.",
-      background: "/vikram.png",
+      background: "/vikram.jpg",
       logo: assets.vikramTitle
     },
     {
@@ -37,7 +37,7 @@ const HeroSection = () => {
       year: "2022",
       duration: "3h 12m",
       description: "Jake Sully and Neytiri must protect their family as new threats emerge on Pandora.",
-      background: "/avatar.png",
+      background: "/avatar.jpg",
       logo: assets.avatarTitle
     },
     {
@@ -47,7 +47,7 @@ const HeroSection = () => {
       year: "2021",
       duration: "2h 59m",
       description: "A laborer rises through the ranks of a red sandalwood smuggling syndicate.",
-      background: "/pushpa.png",
+      background: "/pushpa.jpg",
       logo: assets.pushpaTitle
     },
     {
@@ -57,7 +57,7 @@ const HeroSection = () => {
       year: "2024",
       duration: "2h 28m",
       description: "A mysterious vigilante fights corruption in the system with unconventional methods.",
-      background: "/rrr.png",
+      background: "/rrr.jpg",
       logo: assets.rrrTitle
     }
   ];
