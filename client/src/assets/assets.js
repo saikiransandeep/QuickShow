@@ -1,14 +1,22 @@
 import logo from "./logo.svg";
-import marvelLogo from "./marvelLogo.svg";
 import googlePlay from "./googlePlay.svg";
 import appStore from "./appStore.svg";
 import screenImage from "./screenImage.svg";
 import profile from "./profile.png";
 import ogLogo from "./ogLogo.svg";
+import kgfTitle from "./kgfTitle.svg";
+import pushpaTitle from "./pushpaTitle.svg";
+import vikramTitle from "./vikramTitle.svg";
+import avatarTitle from "./avatarTitle.svg";
+import rrrTitle from "./rrrTitle.svg";
 
 export const assets = {
   logo,
-  marvelLogo,
+  kgfTitle,
+  pushpaTitle,
+  vikramTitle,
+  rrrTitle,
+  avatarTitle,
   ogLogo,
   googlePlay,
   appStore,
