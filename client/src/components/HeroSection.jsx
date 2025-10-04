@@ -73,30 +73,22 @@ const HeroSection = () => {
   // Auto-slide effect
   useEffect(() => {
     const interval = setInterval(() => {
-      // Simply increment the slide index. The snap-back logic is handled in another effect.
       setCurrentSlide((prev) => prev + 1);
-    }, 5000); // Change every 5 seconds
+    }, 5000);
 
     return () => clearInterval(interval);
   }, []);
 
   // Effect to handle the "snap back" for the infinite loop
   useEffect(() => {
-    // When the current slide is the cloned one...
     if (currentSlide === slidesWithClone.length - 1) {
-      // ...wait for the transition to finish (must match CSS duration).
       const timer = setTimeout(() => {
-        // Disable the transition for the snap
         setTransitionEnabled(false);
-        // Instantly jump back to the first slide
         setCurrentSlide(0);
-
-        // A tiny delay to re-enable transition after the DOM has updated
         setTimeout(() => {
           setTransitionEnabled(true);
         }, 50);
-      }, 700); // This duration MUST match the CSS transition duration (e.g., duration-700)
-
+      }, 700);
       return () => clearTimeout(timer);
     }
   }, [currentSlide, slidesWithClone.length]);
@@ -108,7 +100,7 @@ const HeroSection = () => {
 
   return (
     <div className="relative h-screen overflow-hidden">
-      {/* Filmstrip container that holds all slides and moves horizontally */}
+      {/* Filmstrip container */}
       <div
         className={`flex h-full ${
           transitionEnabled
@@ -116,12 +108,11 @@ const HeroSection = () => {
             : "transition-none"
         }`}
         style={{
-          width: `${slidesWithClone.length * 100}%`, // Set width to accommodate all slides
+          width: `${slidesWithClone.length * 100}%`,
           transform: `translateX(-${
             (currentSlide / slidesWithClone.length) * 100
           }%)`,
         }}>
-        {/* Map through all slides (including the clone) and render them */}
         {slidesWithClone.map((slide) => (
           <div key={slide.id} className="relative w-full h-full">
             {/* Background Image */}
@@ -129,8 +120,6 @@ const HeroSection = () => {
               className="absolute inset-0 bg-cover bg-center"
               style={{ backgroundImage: `url(${slide.background})` }}
             />
-
-            {/* Black overlay has been REMOVED */}
 
             {/* Hero Content for each slide */}
             <div className="relative flex flex-col items-start justify-center gap-4 px-6 md:px-16 lg:px-36 h-full z-10 text-white">
@@ -162,24 +151,24 @@ const HeroSection = () => {
                 Explore Movies
                 <ArrowRight className="w-5 h-5" />
               </button>
+
+              {/* Carousel Dots - MOVED HERE */}
+              <div className="flex gap-3 mt-8">
+                {heroSlides.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => goToSlide(index)}
+                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                      index === currentSlide % heroSlides.length
+                        ? "bg-primary scale-125"
+                        : "bg-white/50 hover:bg-white/70"
+                    }`}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                ))}
+              </div>
             </div>
           </div>
-        ))}
-      </div>
-
-      {/* Carousel Dots - Positioned absolutely on top of the filmstrip */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex gap-3">
-        {heroSlides.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => goToSlide(index)}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${
-              index === currentSlide % heroSlides.length // Use modulo to highlight the correct dot
-                ? "bg-primary scale-125"
-                : "bg-white/50 hover:bg-white/70"
-            }`}
-            aria-label={`Go to slide ${index + 1}`}
-          />
         ))}
       </div>
     </div>
